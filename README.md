@@ -1,7 +1,7 @@
 # Mind Daemon
 
 a new cli with server agent running in the background.
-
+this project is just a scaffold now.
 
 ### cli features
 - simpe file upload and download, cause why not
