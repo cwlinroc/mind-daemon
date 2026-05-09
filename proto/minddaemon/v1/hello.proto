@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package minddaemon.v1;
+
+option csharp_namespace = "MindDaemonCli.Proto";
+option go_package = "mind_daemon_dmz/gen/minddaemon/v1;minddaemonv1";
+
+service HelloService {
+  rpc SayHello(HelloRequest) returns (HelloReply);
+}
+
+message HelloRequest {
+  string name = 1;
+}
+
+message HelloReply {
+  string message = 1;
+}

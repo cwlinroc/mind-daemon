@@ -1,0 +1,10 @@
+version: v2
+plugins:
+  - remote: buf.build/protocolbuffers/go
+    out: ../server.dmz/mind_daemon_dmz/gen
+    opt:
+      - paths=source_relative
+  - remote: buf.build/connectrpc/go
+    out: ../server.dmz/mind_daemon_dmz/gen
+    opt:
+      - paths=source_relative
