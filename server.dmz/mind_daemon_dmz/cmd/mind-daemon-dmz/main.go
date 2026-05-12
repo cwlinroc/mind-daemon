@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 
 	"connectrpc.com/connect"
 	minddaemonv1 "mind_daemon_dmz/gen/minddaemon/v1"
@@ -34,6 +35,11 @@ func main() {
 	addr := flag.String("addr", "localhost:8080", "HTTP listen address")
 	flag.Parse()
 
+	effectiveAddr := *addr
+	if p := os.Getenv("PORT"); p != "" {
+		effectiveAddr = ":" + p
+	}
+
 	mux := http.NewServeMux()
 	mux.Handle(minddaemonv1connect.NewHelloServiceHandler(&helloServer{}))
 
@@ -42,12 +48,12 @@ func main() {
 	protocols.SetUnencryptedHTTP2(true)
 
 	server := &http.Server{
-		Addr:      *addr,
+		Addr:      effectiveAddr,
 		Handler:   mux,
 		Protocols: protocols,
 	}
 
-	log.Printf("mind-daemon-dmz listening on http://%s", *addr)
+	log.Printf("mind-daemon-dmz listening on http://%s", effectiveAddr)
 	if err := server.ListenAndServe(); err != nil && err != http.ErrServerClosed {
 		log.Fatalf("server failed: %v", err)
 	}

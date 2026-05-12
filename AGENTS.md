@@ -17,6 +17,8 @@
 - Server tests: [server.dmz/mind_daemon_dmz/cmd/mind-daemon-dmz/main_test.go](server.dmz/mind_daemon_dmz/cmd/mind-daemon-dmz/main_test.go)
 - Generated Go RPC code: [server.dmz/mind_daemon_dmz/gen](server.dmz/mind_daemon_dmz/gen)
 - Server module file: [server.dmz/mind_daemon_dmz/go.mod](server.dmz/mind_daemon_dmz/go.mod)
+- Container build: [server.dmz/mind_daemon_dmz/Dockerfile](server.dmz/mind_daemon_dmz/Dockerfile)
+- CI/CD pipeline: [cloudbuild.yaml](cloudbuild.yaml)
 
 ## Verified Commands
 
@@ -27,6 +29,8 @@ Run these from the repository root.
 - Test the server: `cd server.dmz/mind_daemon_dmz; go test ./...`
 - Run the server: `cd server.dmz/mind_daemon_dmz; go run ./cmd/mind-daemon-dmz`
 - Regenerate Go protobuf/ConnectRPC code after proto edits: `cd proto; buf generate`
+- Build server container locally: `docker build -t mind-daemon-dmz:dev server.dmz/mind_daemon_dmz`
+- Manual Cloud Build run: `gcloud builds submit --config=cloudbuild.yaml .`
 
 Notes:
 
