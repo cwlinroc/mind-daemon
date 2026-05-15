@@ -508,5 +508,7 @@ go.work.sum
 # env file
 .env
 
+# C# Dev Kit cache files
+*.lscache
 
 settings.local.json

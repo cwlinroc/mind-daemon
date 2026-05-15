@@ -1,9 +1,8 @@
 substitutions:
-  _REGION: us-central1
-  _AR_REPO: mind-daemon
+  _REGION: asia-east1
+  _AR_REPO: mind-daemon-registry
   _SERVICE: mind-daemon-dmz
   _RUNTIME_SA: mind-daemon-dmz-run@${PROJECT_ID}.iam.gserviceaccount.com
-
 options:
   logging: CLOUD_LOGGING_ONLY
 
